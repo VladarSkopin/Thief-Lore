@@ -1,0 +1,129 @@
+name: thief_app
+description: Thief lore app. Characters, factions, equipment and locations of the Thief world.
+
+publish_to: 'none'
+version: 1.0.0+1
+
+environment:
+  sdk: ">=2.12.0 <3.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  google_fonts: ^2.1.0
+  #provider: ^6.0.0
+  just_audio: ^0.9.13
+  animated_splash_screen:
+  flutter_native_splash: ^2.0.1+1
+  #flutter_native_splash: ^1.3.2
+  page_transition: ^2.0.4
+  avatar_glow: ^1.1.0
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+
+flutter_native_splash:
+  color: "#000000"
+  #image: assets/logos/thief_logo_2.png
+  background_image: assets/logos/thief_logo_2.png
+
+flutter:
+  fonts:
+    - family: Redressed
+      fonts:
+        - asset: assets/fonts/Redressed-Regular.ttf
+          weight: 700
+    - family: JD
+      fonts:
+        - asset: assets/fonts/j.d.ttf
+    - family: Carleton
+      fonts:
+        - asset: assets/fonts/CARLETON.TTF
+    - family: Charlesworth
+      fonts:
+        - asset: assets/fonts/Charlesworth.ttf
+    - family: Papyrus
+      fonts:
+        - asset: assets/fonts/PAPYRUS.TTF
+  uses-material-design: true
+
+  assets:
+    - assets/
+    - assets/audio/
+    - assets/characters_pics/artemus.jpg
+    - assets/characters_pics/basso.jpg
+    - assets/characters_pics/basso_2.jpg
+    - assets/characters_pics/constantine.jpg
+    - assets/characters_pics/constantine_2.jpg
+    - assets/characters_pics/constantine_3.jpg
+    - assets/characters_pics/constantine_4.jpg
+    - assets/characters_pics/garrett.jpg
+    - assets/characters_pics/garrett_2.jpg
+    - assets/characters_pics/garrett_3.jpg
+    - assets/characters_pics/karras.png
+    - assets/characters_pics/karras_2.jpg
+    - assets/characters_pics/karras_3.jpg
+    - assets/characters_pics/karras_4.jpg
+    - assets/characters_pics/me.jpg
+    - assets/characters_pics/orland.jpg
+    - assets/characters_pics/orland_2.jpg
+    - assets/characters_pics/victoria.jpg
+    - assets/characters_pics/victoria_2.jpg
+    - assets/characters_pics/victoria_3.jpg
+    - assets/characters_pics/victoria_4.png
+    - assets/characters_pics/victoria_5.png
+    - assets/factions_pics/hammerites.jpg
+    - assets/factions_pics/hammerites_2.jpg
+    - assets/factions_pics/hammerites_3.jpg
+    - assets/factions_pics/hand_brotherhood.jpg
+    - assets/factions_pics/hand_brotherhood_2.jpg
+    - assets/factions_pics/keepers.jpg
+    - assets/factions_pics/keepers_2.jpg
+    - assets/factions_pics/keepers_3.jpg
+    - assets/factions_pics/mechanists.jpg
+    - assets/factions_pics/mechanists_2.png
+    - assets/factions_pics/mechanists_3.png
+    - assets/factions_pics/mechanists_4.jpg
+    - assets/factions_pics/mechanists_6.jpg
+    - assets/factions_pics/pagans.jpg
+    - assets/factions_pics/pagans_2.jpg
+    - assets/factions_pics/pagans_3.jpg
+    - assets/factions_pics/pagans_4.jpg
+    - assets/items_pics/blackjack.jpg
+    - assets/items_pics/fire_arrow.png
+    - assets/items_pics/flash_mine.jpg
+    - assets/items_pics/flashbomb.jpg
+    - assets/items_pics/gas_arrow.png
+    - assets/items_pics/health_potion.jpg
+    - assets/items_pics/ivisibility_potion.png
+    - assets/items_pics/mine.jpg
+    - assets/items_pics/moss_arrow.png
+    - assets/items_pics/noise_arrow.jpg
+    - assets/items_pics/rope_arrow.jpg
+    - assets/items_pics/scouting_orb.jpg
+    - assets/items_pics/slow_fall_potion.png
+    - assets/items_pics/sword.jpg
+    - assets/items_pics/water_arrow.png
+    - assets/location_pics/auldale.jpg
+    - assets/location_pics/blackbrook.PNG
+    - assets/location_pics/city.jpg
+    - assets/location_pics/docks.png
+    - assets/location_pics/icon_1.png
+    - assets/location_pics/icon_2.png
+    - assets/location_pics/icon_3.png
+    - assets/location_pics/icon_4.png
+    - assets/location_pics/icon_5.png
+    - assets/location_pics/kurshok.jpg
+    - assets/location_pics/museum.jpg
+    - assets/location_pics/old_quarter.jpg
+    - assets/location_pics/pagan_forest.png
+    - assets/location_pics/sewers.PNG
+    - assets/location_pics/shalebridge.jpg
+    - assets/location_pics/south_quarter.jpg
+    - assets/location_pics/stonemarket.jpg
+    - assets/location_pics/thief_map.jpg
+    - assets/location_pics/thief_map_2.png
+    - assets/logos/thief_logo.png
+    - assets/logos/thief_logo_2.png
