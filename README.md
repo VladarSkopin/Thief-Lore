@@ -1,6 +1,10 @@
 
 Thief Lore
 
+![Thief Lore Front Page](/thief_lore_screenshot_1.PNG?raw=true "Front page")
+
+![Locations Page](/thief_lore_screenshot_2.PNG?raw=true "Locations page")
+
 _____
 
 DESCRIPTION
