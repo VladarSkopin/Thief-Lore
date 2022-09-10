@@ -34,7 +34,6 @@ _____
 AUTHORS AND ACKNOWLEDGEMENT
 
 Alexander Skopintsev
-Nikita Kondrakhin
 
 SPECIAL THANKS
 To all the LGS team members for creating such an incredible game. 
