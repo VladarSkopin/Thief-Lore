@@ -57,7 +57,7 @@ class _CharacterListState extends State<CharacterList> {
                 tileMode: TileMode.mirror,
               )
           ),
-          child: ListView.separated(
+          child: ListView.builder(
             controller: _scrollController,
             physics: BouncingScrollPhysics(),
             padding: EdgeInsets.symmetric(horizontal: 8, vertical: 20),
@@ -65,92 +65,126 @@ class _CharacterListState extends State<CharacterList> {
               itemBuilder: (context, index) {
                 return Column(
                   children: [
-                    Card(
-                      elevation: 8.0,
-                      shadowColor: Colors.indigo,
-                      shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(20.0)),
-                      child: Column(children: [
-                        SizedBox(height: 20),
-                        Text(characterList[index].name,
-                            style: Theme.of(context).textTheme.headline2),
-                        SizedBox(height: 20),
-                        GestureDetector(
-                          onTap: () {
-                            Navigator.push(
-                              context,
-                              PageTransition(
-                                type: PageTransitionType.rightToLeft,
-                                  //alignment: Alignment.center,
-                                  duration: Duration(milliseconds: 600),
-                                  child:
-                                  (index == 0) ?
-                                    CharacterCard.buildGarrettCard(context) :
-                                  (index == 1) ?
-                                    CharacterCard.buildBassoCard(context) :
-                                  (index == 2) ?
-                                    CharacterCard.buildArtemusCard(context) :
-                                  (index == 3) ?
-                                    CharacterCard.buildVictoriaCard(context) :
-                                  (index == 4) ?
-                                    CharacterCard.buildConstantineCard(context) :
-                                  (index == 5) ?
-                                    CharacterCard.buildKarrasCard(context) :
-                                  (index == 6) ?
-                                    CharacterCard.buildOrlandCard(context) :
-                                  Scaffold(
-                                    appBar: AppBar(),
-                                    body: Container(
-                                      child: Center(child: Text("Unknown character card",
-                                        style: Theme.of(context).textTheme.headline1?.copyWith(
-                                            color: Colors.amber,
-                                            fontSize: 20
-                                        ),)),
-                                      color: Colors.black,
-                                    ),
-                                  )
-                              ));
-                          },
-                          child: Container(
-                            padding: const EdgeInsets.all(16.0),
-                            constraints: const BoxConstraints.expand(
+                    Transform.scale(
+                      scale: 0.9,
+                      child: Card(
+                        elevation: 8.0,
+                        shadowColor: Colors.indigo,
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(20.0)),
+                        child: Column(children: [
+                          SizedBox(height: 20),
+                          Text(characterList[index].name,
+                              style: Theme.of(context).textTheme.headline2),
+                          SizedBox(height: 20),
+                          GestureDetector(
+                            onTap: () {
+                              Navigator.push(
+                                context,
+                                PageTransition(
+                                  type: PageTransitionType.rightToLeft,
+                                    //alignment: Alignment.center,
+                                    duration: Duration(milliseconds: 600),
+                                    child:
+                                    (index == 0) ?
+                                      CharacterCard.buildGarrettCard(context) :
+                                    (index == 1) ?
+                                      CharacterCard.buildBassoCard(context) :
+                                    (index == 2) ?
+                                      CharacterCard.buildArtemusCard(context) :
+                                    (index == 3) ?
+                                      CharacterCard.buildVictoriaCard(context) :
+                                    (index == 4) ?
+                                      CharacterCard.buildConstantineCard(context) :
+                                    (index == 5) ?
+                                      CharacterCard.buildKarrasCard(context) :
+                                    (index == 6) ?
+                                      CharacterCard.buildOrlandCard(context) :
+                                    Scaffold(
+                                      appBar: AppBar(),
+                                      body: Container(
+                                        child: Center(child: Text("Unknown character card",
+                                          style: Theme.of(context).textTheme.headline1?.copyWith(
+                                              color: Colors.amber,
+                                              fontSize: 20
+                                          ),)),
+                                        color: Colors.black,
+                                      ),
+                                    )
+                                ));
+                            },
+                            child:
+
+                              ClipRRect(
+                                borderRadius: BorderRadius.circular(20),
+                                child: Image(
+                                  image: AssetImage(characterList[index].image),
+                                  width: 250,
+                                  height: 250,
+                                  fit: BoxFit.cover,
+                                ),
+                              )
+
+                            /*
+                            Image(
+                                image: AssetImage(characterList[index].image),
                               width: 250,
                               height: 250,
-                            ),
-                            decoration: BoxDecoration(
-                              image: DecorationImage(
-                                image: AssetImage(characterList[index].image),
-                                fit: BoxFit.cover,
+                              fit: BoxFit.cover,
+                            )
+                            */
+
+
+                            /*
+                            Container(
+                              padding: const EdgeInsets.all(16.0),
+                             /*
+                              constraints: const BoxConstraints.expand(
+                                width: 350,
+                                height: 250,
                               ),
-                              borderRadius: const BorderRadius.all(
-                                Radius.circular(10.0),
+                              */
+                              decoration: BoxDecoration(
+                                image: DecorationImage(
+                                  image: AssetImage(characterList[index].image),
+                                  fit: BoxFit.cover,
+                                ),
+                                borderRadius: const BorderRadius.all(
+                                  Radius.circular(10.0),
+                                ),
                               ),
                             ),
+                            */
+
+
                           ),
-                        ),
-                        SizedBox(height: 20),
-                        Align(
-                          alignment: Alignment.center,
-                          child: Text(characterList[index].description,
-                              style: Theme.of(context).textTheme.bodyText2),
-                        ),
-                        SizedBox(height: 20),
-                      ]),
+                          SizedBox(height: 20),
+                          Padding(
+                            padding: EdgeInsets.symmetric(horizontal: 20),
+                            child: Text(characterList[index].description,
+                                style: Theme.of(context).textTheme.bodyText2,
+                            textAlign: TextAlign.center),
+                          ),
+                          SizedBox(height: 20),
+                        ]),
+                      ),
                     ),
                 (index == characterList.length - 1) ? SizedBox(
-                height: 100,
+                height: 50,
                 ) :
                 SizedBox(
-                height: 5,
+                height: 1,
                 )
                   ],
                 );
               },
+            /*
             separatorBuilder: (context, index) {
               return SizedBox(
                     height: 20,
                   );
             },
+            */
           ),
         ),
         floatingActionButton: AnimatedOpacity(
