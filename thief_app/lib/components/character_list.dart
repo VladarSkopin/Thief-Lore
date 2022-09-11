@@ -67,12 +67,18 @@ class _CharacterListState extends State<CharacterList> {
                   children: [
                     SizedBox(
                       width: MediaQuery.of(context).size.width / 1.4,
-                      height: MediaQuery.of(context).size.width / 1.1,
+                      height: MediaQuery.of(context).size.width / 1.05,
                       child: Card(
                         elevation: 8.0,
                         shadowColor: Colors.indigo,
                         shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(20.0)),
+                            borderRadius: BorderRadius.circular(20.0),
+                            side: BorderSide(
+                              //color: Color.fromRGBO(54, 48, 128, 1),
+                              color: Colors.grey[600]!,
+                              width: 1
+                          ),
+                        ),
                         child: Column(children: [
                           Padding(
                             padding: const EdgeInsets.symmetric(vertical: 20),
@@ -126,12 +132,16 @@ class _CharacterListState extends State<CharacterList> {
                                 ),
                               )
                           ),
-                          Padding(
-                            padding: EdgeInsets.symmetric(
-                                horizontal: 10, vertical: 20),
-                            child: Text(characterList[index].description,
-                                style: Theme.of(context).textTheme.headline6,
-                            textAlign: TextAlign.center),
+                          Expanded(
+                            child: Padding(
+                              padding: EdgeInsets.symmetric(
+                                  horizontal: 10, vertical: 20),
+                              child: Text(characterList[index].description,
+                                  style: Theme.of(context).textTheme.headline6,
+                              maxLines: 2,
+                              overflow: TextOverflow.ellipsis,
+                              textAlign: TextAlign.center),
+                            ),
                           ),
                         ]),
                       ),
