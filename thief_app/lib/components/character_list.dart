@@ -57,7 +57,7 @@ class _CharacterListState extends State<CharacterList> {
                 tileMode: TileMode.mirror,
               )
           ),
-          child: ListView.builder(
+          child: ListView.separated(
             controller: _scrollController,
             physics: BouncingScrollPhysics(),
             padding: EdgeInsets.symmetric(horizontal: 8, vertical: 20),
@@ -65,18 +65,20 @@ class _CharacterListState extends State<CharacterList> {
               itemBuilder: (context, index) {
                 return Column(
                   children: [
-                    Transform.scale(
-                      scale: 0.9,
+                    SizedBox(
+                      width: MediaQuery.of(context).size.width / 1.4,
+                      height: MediaQuery.of(context).size.width / 1.1,
                       child: Card(
                         elevation: 8.0,
                         shadowColor: Colors.indigo,
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(20.0)),
                         child: Column(children: [
-                          SizedBox(height: 20),
-                          Text(characterList[index].name,
-                              style: Theme.of(context).textTheme.headline2),
-                          SizedBox(height: 20),
+                          Padding(
+                            padding: const EdgeInsets.symmetric(vertical: 20),
+                            child: Text(characterList[index].name,
+                                style: Theme.of(context).textTheme.headline2?.copyWith(fontSize: 32)),
+                          ),
                           GestureDetector(
                             onTap: () {
                               Navigator.push(
@@ -114,77 +116,42 @@ class _CharacterListState extends State<CharacterList> {
                                 ));
                             },
                             child:
-
                               ClipRRect(
                                 borderRadius: BorderRadius.circular(20),
                                 child: Image(
                                   image: AssetImage(characterList[index].image),
-                                  width: 250,
-                                  height: 250,
+                                  width: MediaQuery.of(context).size.width / 2.0,
+                                  height: MediaQuery.of(context).size.width / 2.0,
                                   fit: BoxFit.cover,
                                 ),
                               )
-
-                            /*
-                            Image(
-                                image: AssetImage(characterList[index].image),
-                              width: 250,
-                              height: 250,
-                              fit: BoxFit.cover,
-                            )
-                            */
-
-
-                            /*
-                            Container(
-                              padding: const EdgeInsets.all(16.0),
-                             /*
-                              constraints: const BoxConstraints.expand(
-                                width: 350,
-                                height: 250,
-                              ),
-                              */
-                              decoration: BoxDecoration(
-                                image: DecorationImage(
-                                  image: AssetImage(characterList[index].image),
-                                  fit: BoxFit.cover,
-                                ),
-                                borderRadius: const BorderRadius.all(
-                                  Radius.circular(10.0),
-                                ),
-                              ),
-                            ),
-                            */
-
-
                           ),
-                          SizedBox(height: 20),
                           Padding(
-                            padding: EdgeInsets.symmetric(horizontal: 20),
+                            padding: EdgeInsets.symmetric(
+                                horizontal: 10, vertical: 20),
                             child: Text(characterList[index].description,
-                                style: Theme.of(context).textTheme.bodyText2,
+                                style: Theme.of(context).textTheme.headline6,
                             textAlign: TextAlign.center),
                           ),
-                          SizedBox(height: 20),
                         ]),
                       ),
                     ),
                 (index == characterList.length - 1) ? SizedBox(
-                height: 50,
+                height: 80,
                 ) :
                 SizedBox(
-                height: 1,
+                height: 10,
                 )
                   ],
                 );
               },
-            /*
+
             separatorBuilder: (context, index) {
               return SizedBox(
                     height: 20,
                   );
             },
-            */
+
           ),
         ),
         floatingActionButton: AnimatedOpacity(
