@@ -3,6 +3,7 @@ import 'faction.dart';
 import 'faction_card.dart';
 import 'package:page_transition/page_transition.dart';
 
+
 class FactionList extends StatelessWidget {
   final factionList = Faction.factions;
 
@@ -91,35 +92,34 @@ class FactionList extends StatelessWidget {
                           ),
                         );
                       },
-                      child: Container(
-                        constraints: BoxConstraints.expand(
-                          width: MediaQuery.of(context).size.width / 2.5,
-                          height: MediaQuery.of(context).size.width / 2.5,
-                        ),
-                        decoration: BoxDecoration(
-                          image: DecorationImage(
+                      child:
+                        ClipRRect(
+                          borderRadius: BorderRadius.circular(10),
+                          child: Image(
                             image: AssetImage(factionList[index].image),
+                              width: MediaQuery.of(context).size.width / 2.5,
+                              height: MediaQuery.of(context).size.width / 2.5,
                             fit: BoxFit.cover,
                           ),
-                          borderRadius: const BorderRadius.all(
-                            Radius.circular(10.0),
-                          ),
-                        ),
-                      ),
+                        )
                     ),
-                    SizedBox(height: 20),
-                    Text(factionList[index].title,
-                        style: Theme.of(context).textTheme.headline6),
-                    SizedBox(height: 20),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(vertical: 20),
+                      child: Text(factionList[index].title,
+                          style: Theme.of(context).textTheme.bodyText2,
+                      textAlign: TextAlign.center),
+                    ),
                   ]),
                 ),
               );
             },
+
             separatorBuilder: (context, index) {
               return SizedBox(
                 height: 40,
               );
             },
+
           ),
         ),
       ),

@@ -65,92 +65,93 @@ class _CharacterListState extends State<CharacterList> {
               itemBuilder: (context, index) {
                 return Column(
                   children: [
-                    Card(
-                      elevation: 8.0,
-                      shadowColor: Colors.indigo,
-                      shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(20.0)),
-                      child: Column(children: [
-                        SizedBox(height: 20),
-                        Text(characterList[index].name,
-                            style: Theme.of(context).textTheme.headline2),
-                        SizedBox(height: 20),
-                        GestureDetector(
-                          onTap: () {
-                            Navigator.push(
-                              context,
-                              PageTransition(
-                                type: PageTransitionType.rightToLeft,
-                                  //alignment: Alignment.center,
-                                  duration: Duration(milliseconds: 600),
-                                  child:
-                                  (index == 0) ?
-                                    CharacterCard.buildGarrettCard(context) :
-                                  (index == 1) ?
-                                    CharacterCard.buildBassoCard(context) :
-                                  (index == 2) ?
-                                    CharacterCard.buildArtemusCard(context) :
-                                  (index == 3) ?
-                                    CharacterCard.buildVictoriaCard(context) :
-                                  (index == 4) ?
-                                    CharacterCard.buildConstantineCard(context) :
-                                  (index == 5) ?
-                                    CharacterCard.buildKarrasCard(context) :
-                                  (index == 6) ?
-                                    CharacterCard.buildOrlandCard(context) :
-                                  Scaffold(
-                                    appBar: AppBar(),
-                                    body: Container(
-                                      child: Center(child: Text("Unknown character card",
-                                        style: Theme.of(context).textTheme.headline1?.copyWith(
-                                            color: Colors.amber,
-                                            fontSize: 20
-                                        ),)),
-                                      color: Colors.black,
-                                    ),
-                                  )
-                              ));
-                          },
-                          child: Container(
-                            padding: const EdgeInsets.all(16.0),
-                            constraints: const BoxConstraints.expand(
-                              width: 250,
-                              height: 250,
-                            ),
-                            decoration: BoxDecoration(
-                              image: DecorationImage(
-                                image: AssetImage(characterList[index].image),
-                                fit: BoxFit.cover,
-                              ),
-                              borderRadius: const BorderRadius.all(
-                                Radius.circular(10.0),
-                              ),
-                            ),
+                    SizedBox(
+                      width: MediaQuery.of(context).size.width / 1.4,
+                      height: MediaQuery.of(context).size.width / 1.1,
+                      child: Card(
+                        elevation: 8.0,
+                        shadowColor: Colors.indigo,
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(20.0)),
+                        child: Column(children: [
+                          Padding(
+                            padding: const EdgeInsets.symmetric(vertical: 20),
+                            child: Text(characterList[index].name,
+                                style: Theme.of(context).textTheme.headline2?.copyWith(fontSize: 32)),
                           ),
-                        ),
-                        SizedBox(height: 20),
-                        Align(
-                          alignment: Alignment.center,
-                          child: Text(characterList[index].description,
-                              style: Theme.of(context).textTheme.bodyText2),
-                        ),
-                        SizedBox(height: 20),
-                      ]),
+                          GestureDetector(
+                            onTap: () {
+                              Navigator.push(
+                                context,
+                                PageTransition(
+                                  type: PageTransitionType.rightToLeft,
+                                    //alignment: Alignment.center,
+                                    duration: Duration(milliseconds: 600),
+                                    child:
+                                    (index == 0) ?
+                                      CharacterCard.buildGarrettCard(context) :
+                                    (index == 1) ?
+                                      CharacterCard.buildBassoCard(context) :
+                                    (index == 2) ?
+                                      CharacterCard.buildArtemusCard(context) :
+                                    (index == 3) ?
+                                      CharacterCard.buildVictoriaCard(context) :
+                                    (index == 4) ?
+                                      CharacterCard.buildConstantineCard(context) :
+                                    (index == 5) ?
+                                      CharacterCard.buildKarrasCard(context) :
+                                    (index == 6) ?
+                                      CharacterCard.buildOrlandCard(context) :
+                                    Scaffold(
+                                      appBar: AppBar(),
+                                      body: Container(
+                                        child: Center(child: Text("Unknown character card",
+                                          style: Theme.of(context).textTheme.headline1?.copyWith(
+                                              color: Colors.amber,
+                                              fontSize: 20
+                                          ),)),
+                                        color: Colors.black,
+                                      ),
+                                    )
+                                ));
+                            },
+                            child:
+                              ClipRRect(
+                                borderRadius: BorderRadius.circular(20),
+                                child: Image(
+                                  image: AssetImage(characterList[index].image),
+                                  width: MediaQuery.of(context).size.width / 2.0,
+                                  height: MediaQuery.of(context).size.width / 2.0,
+                                  fit: BoxFit.cover,
+                                ),
+                              )
+                          ),
+                          Padding(
+                            padding: EdgeInsets.symmetric(
+                                horizontal: 10, vertical: 20),
+                            child: Text(characterList[index].description,
+                                style: Theme.of(context).textTheme.headline6,
+                            textAlign: TextAlign.center),
+                          ),
+                        ]),
+                      ),
                     ),
                 (index == characterList.length - 1) ? SizedBox(
-                height: 100,
+                height: 80,
                 ) :
                 SizedBox(
-                height: 5,
+                height: 10,
                 )
                   ],
                 );
               },
+
             separatorBuilder: (context, index) {
               return SizedBox(
                     height: 20,
                   );
             },
+
           ),
         ),
         floatingActionButton: AnimatedOpacity(
