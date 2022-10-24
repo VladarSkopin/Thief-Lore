@@ -68,82 +68,81 @@ class _CharacterListState extends State<CharacterList> {
                     SizedBox(
                       width: MediaQuery.of(context).size.width / 1.4,
                       height: MediaQuery.of(context).size.width / 1.05,
-                      child: Card(
-                        elevation: 8.0,
-                        shadowColor: Colors.indigo,
-                        shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(20.0),
-                            side: BorderSide(
-                              //color: Color.fromRGBO(54, 48, 128, 1),
-                              color: Colors.grey[600]!,
-                              width: 1
-                          ),
-                        ),
-                        child: Column(children: [
-                          Padding(
-                            padding: const EdgeInsets.symmetric(vertical: 20),
-                            child: Text(characterList[index].name,
-                                style: Theme.of(context).textTheme.headline2?.copyWith(fontSize: 32)),
-                          ),
-                          GestureDetector(
-                            onTap: () {
-                              Navigator.push(
-                                context,
-                                PageTransition(
+                      child: GestureDetector(
+                        onTap: () {
+                          Navigator.push(
+                              context,
+                              PageTransition(
                                   type: PageTransitionType.rightToLeft,
-                                    //alignment: Alignment.center,
-                                    duration: Duration(milliseconds: 600),
-                                    child:
-                                    (index == 0) ?
-                                      CharacterCard.buildGarrettCard(context) :
-                                    (index == 1) ?
-                                      CharacterCard.buildBassoCard(context) :
-                                    (index == 2) ?
-                                      CharacterCard.buildArtemusCard(context) :
-                                    (index == 3) ?
-                                      CharacterCard.buildVictoriaCard(context) :
-                                    (index == 4) ?
-                                      CharacterCard.buildConstantineCard(context) :
-                                    (index == 5) ?
-                                      CharacterCard.buildKarrasCard(context) :
-                                    (index == 6) ?
-                                      CharacterCard.buildOrlandCard(context) :
-                                    Scaffold(
-                                      appBar: AppBar(),
-                                      body: Container(
-                                        child: Center(child: Text("Unknown character card",
-                                          style: Theme.of(context).textTheme.headline1?.copyWith(
-                                              color: Colors.amber,
-                                              fontSize: 20
-                                          ),)),
-                                        color: Colors.black,
-                                      ),
-                                    )
-                                ));
-                            },
-                            child:
-                              ClipRRect(
-                                borderRadius: BorderRadius.circular(20),
-                                child: Image(
-                                  image: AssetImage(characterList[index].image),
-                                  width: MediaQuery.of(context).size.width / 2.0,
-                                  height: MediaQuery.of(context).size.width / 2.0,
-                                  fit: BoxFit.cover,
-                                ),
-                              )
-                          ),
-                          Expanded(
-                            child: Padding(
-                              padding: EdgeInsets.symmetric(
-                                  horizontal: 10, vertical: 20),
-                              child: Text(characterList[index].description,
-                                  style: Theme.of(context).textTheme.headline6,
-                              maxLines: 2,
-                              overflow: TextOverflow.ellipsis,
-                              textAlign: TextAlign.center),
+                                  //alignment: Alignment.center,
+                                  duration: Duration(milliseconds: 600),
+                                  child:
+                                  (index == 0) ?
+                                  CharacterCard.buildGarrettCard(context) :
+                                  (index == 1) ?
+                                  CharacterCard.buildBassoCard(context) :
+                                  (index == 2) ?
+                                  CharacterCard.buildArtemusCard(context) :
+                                  (index == 3) ?
+                                  CharacterCard.buildVictoriaCard(context) :
+                                  (index == 4) ?
+                                  CharacterCard.buildConstantineCard(context) :
+                                  (index == 5) ?
+                                  CharacterCard.buildKarrasCard(context) :
+                                  (index == 6) ?
+                                  CharacterCard.buildOrlandCard(context) :
+                                  Scaffold(
+                                    appBar: AppBar(),
+                                    body: Container(
+                                      child: Center(child: Text("Unknown character card",
+                                        style: Theme.of(context).textTheme.headline1?.copyWith(
+                                            color: Colors.amber,
+                                            fontSize: 20
+                                        ),)),
+                                      color: Colors.black,
+                                    ),
+                                  )
+                              ));
+                        },
+                        child: Card(
+                          elevation: 8.0,
+                          shadowColor: Colors.indigo,
+                          shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(20.0),
+                              side: BorderSide(
+                                //color: Color.fromRGBO(54, 48, 128, 1),
+                                color: Colors.grey[600]!,
+                                width: 1
                             ),
                           ),
-                        ]),
+                          child: Column(children: [
+                            Padding(
+                              padding: const EdgeInsets.symmetric(vertical: 20),
+                              child: Text(characterList[index].name,
+                                  style: Theme.of(context).textTheme.headline2?.copyWith(fontSize: 32)),
+                            ),
+                            ClipRRect(
+                              borderRadius: BorderRadius.circular(20),
+                              child: Image(
+                                image: AssetImage(characterList[index].image),
+                                width: MediaQuery.of(context).size.width / 2.0,
+                                height: MediaQuery.of(context).size.width / 2.0,
+                                fit: BoxFit.cover,
+                              ),
+                            ),
+                            Expanded(
+                              child: Padding(
+                                padding: EdgeInsets.symmetric(
+                                    horizontal: 10, vertical: 20),
+                                child: Text(characterList[index].description,
+                                    style: Theme.of(context).textTheme.headline6,
+                                maxLines: 2,
+                                overflow: TextOverflow.ellipsis,
+                                textAlign: TextAlign.center),
+                              ),
+                            ),
+                          ]),
+                        ),
                       ),
                     ),
                 (index == characterList.length - 1) ? SizedBox(

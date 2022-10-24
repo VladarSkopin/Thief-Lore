@@ -40,76 +40,75 @@ class FactionList extends StatelessWidget {
             padding: EdgeInsets.symmetric(horizontal: 8, vertical: 20),
             itemCount: factionList.length,
             itemBuilder: (context, index) {
-              return Card(
-                elevation: 4.0,
-                shadowColor: Colors.amber,
-                shape: BeveledRectangleBorder(
-                  side: BorderSide(
-                    //color: Color.fromRGBO(54, 48, 128, 1),
-                    color: Colors.grey[600]!,
-                    width: 2
-                  ),
-                    borderRadius: BorderRadius.circular(20.0)),
-                child: Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                    SizedBox(
-                      height: 20,
-                    ),
-                    GestureDetector(
-                      onTap: () {
-                        Navigator.push(
-                          context,
-                          PageTransition(
+              return GestureDetector(
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    PageTransition(
                         type: PageTransitionType.rightToLeft,
-                              duration: Duration(milliseconds: 600),
-                              child:
-                              (index == 0) ?
-                                FactionCard.buildHammeriteCard(context) :
-                              (index == 1) ?
-                                FactionCard.buildPaganCard(context) :
-                              (index == 2) ?
-                                FactionCard.buildKeeperCard(context) :
-                              (index == 3) ?
-                                FactionCard.buildBrotherhoodCard(
-                                    context) :
-                              (index == 4) ?
-                                FactionCard.buildMechanistCard(context) :
-                              Scaffold(
-                                appBar: AppBar(),
-                                body: Container(
-                                  child: Center(child: Text("Unknown faction card",
-                                    style: Theme.of(context).textTheme.headline1?.copyWith(
-                                        color: Colors.amber,
-                                        fontSize: 20
-                                    ),)),
-                                  color: Colors.black,
-                                ),
-                              )
-                          ),
-                        );
-                      },
-                      child:
-                        ClipRRect(
-                          borderRadius: BorderRadius.circular(10),
-                          child: Image(
-                            image: AssetImage(factionList[index].image),
-                              width: MediaQuery.of(context).size.width / 2.5,
-                              height: MediaQuery.of(context).size.width / 2.5,
-                            fit: BoxFit.cover,
+                        duration: Duration(milliseconds: 600),
+                        child:
+                        (index == 0) ?
+                        FactionCard.buildHammeriteCard(context) :
+                        (index == 1) ?
+                        FactionCard.buildPaganCard(context) :
+                        (index == 2) ?
+                        FactionCard.buildKeeperCard(context) :
+                        (index == 3) ?
+                        FactionCard.buildBrotherhoodCard(
+                            context) :
+                        (index == 4) ?
+                        FactionCard.buildMechanistCard(context) :
+                        Scaffold(
+                          appBar: AppBar(),
+                          body: Container(
+                            child: Center(child: Text("Unknown faction card",
+                              style: Theme.of(context).textTheme.headline1?.copyWith(
+                                  color: Colors.amber,
+                                  fontSize: 20
+                              ),)),
+                            color: Colors.black,
                           ),
                         )
                     ),
-                    Padding(
-                      padding: const EdgeInsets.symmetric(vertical: 20),
-                      child: Text(factionList[index].title,
-                          style: Theme.of(context).textTheme.bodyText2,
-                      textAlign: TextAlign.center),
+                  );
+                },
+                child: Card(
+                  elevation: 4.0,
+                  shadowColor: Colors.amber,
+                  shape: BeveledRectangleBorder(
+                    side: BorderSide(
+                      //color: Color.fromRGBO(54, 48, 128, 1),
+                      color: Colors.grey[600]!,
+                      width: 2
                     ),
-                  ]),
+                      borderRadius: BorderRadius.circular(20.0)),
+                  child: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                      SizedBox(
+                        height: 20,
+                      ),
+                      ClipRRect(
+                        borderRadius: BorderRadius.circular(10),
+                        child: Image(
+                          image: AssetImage(factionList[index].image),
+                            width: MediaQuery.of(context).size.width / 2.5,
+                            height: MediaQuery.of(context).size.width / 2.5,
+                          fit: BoxFit.cover,
+                        ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.symmetric(vertical: 20),
+                        child: Text(factionList[index].title,
+                            style: Theme.of(context).textTheme.bodyText2,
+                        textAlign: TextAlign.center),
+                      ),
+                    ]),
+                  ),
                 ),
               );
             },
