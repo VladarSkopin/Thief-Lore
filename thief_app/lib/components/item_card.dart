@@ -71,7 +71,7 @@ class ItemCard {
                   SizedBox(width: 16),
                   Expanded(
                       child: Text(healthPotionDescription,
-                          style: Theme.of(context).textTheme.bodyText2))
+                          style: Theme.of(context).textTheme.bodyText2?.copyWith(fontSize: 18)))
                 ],
               ),
             ),
@@ -120,7 +120,7 @@ class ItemCard {
                   SizedBox(width: 16),
                   Expanded(
                       child: Text(invisibilityPotionDescription,
-                          style: Theme.of(context).textTheme.bodyText2))
+                          style: Theme.of(context).textTheme.bodyText2?.copyWith(fontSize: 18)))
                 ],
               ),
             ),
@@ -169,7 +169,7 @@ class ItemCard {
                   SizedBox(width: 16),
                   Expanded(
                       child: Text(slowFallPotionDescription,
-                          style: Theme.of(context).textTheme.bodyText2)),
+                          style: Theme.of(context).textTheme.bodyText2?.copyWith(fontSize: 18))),
                 ],
               ),
             ),
@@ -217,7 +217,7 @@ class ItemCard {
                   SizedBox(width: 16),
                   Expanded(
                       child: Text(scoutingOrbDescription,
-                          style: Theme.of(context).textTheme.bodyText2)),
+                          style: Theme.of(context).textTheme.bodyText2?.copyWith(fontSize: 18))),
                 ],
               ),
             ),
@@ -265,7 +265,7 @@ class ItemCard {
                   SizedBox(width: 16),
                   Expanded(
                       child: Text(flashBombDescription,
-                          style: Theme.of(context).textTheme.bodyText2)),
+                          style: Theme.of(context).textTheme.bodyText2?.copyWith(fontSize: 18))),
                 ],
               ),
             ),
@@ -313,7 +313,7 @@ class ItemCard {
                   SizedBox(width: 16),
                   Expanded(
                       child: Text(flashMineDescription,
-                          style: Theme.of(context).textTheme.bodyText2)),
+                          style: Theme.of(context).textTheme.bodyText2?.copyWith(fontSize: 18))),
                 ],
               ),
             ),
@@ -361,7 +361,7 @@ class ItemCard {
                   SizedBox(width: 16),
                   Expanded(
                       child: Text(noiseArrowDescription,
-                          style: Theme.of(context).textTheme.bodyText2)),
+                          style: Theme.of(context).textTheme.bodyText2?.copyWith(fontSize: 18))),
                 ],
               ),
             ),
@@ -409,7 +409,7 @@ class ItemCard {
                   SizedBox(width: 16),
                   Expanded(
                       child: Text(waterArrowDescription,
-                          style: Theme.of(context).textTheme.bodyText2)),
+                          style: Theme.of(context).textTheme.bodyText2?.copyWith(fontSize: 18))),
                 ],
               ),
             ),
@@ -457,7 +457,7 @@ class ItemCard {
                   SizedBox(width: 16),
                   Expanded(
                       child: Text(fireArrowDescription,
-                          style: Theme.of(context).textTheme.bodyText2)),
+                          style: Theme.of(context).textTheme.bodyText2?.copyWith(fontSize: 18))),
                 ],
               ),
             ),
@@ -505,7 +505,7 @@ class ItemCard {
                   SizedBox(width: 16),
                   Expanded(
                       child: Text(mossArrowDescription,
-                          style: Theme.of(context).textTheme.bodyText2)),
+                          style: Theme.of(context).textTheme.bodyText2?.copyWith(fontSize: 18))),
                 ],
               ),
             ),
@@ -553,7 +553,7 @@ class ItemCard {
                   SizedBox(width: 16),
                   Expanded(
                       child: Text(gasArrowDescription,
-                          style: Theme.of(context).textTheme.bodyText2)),
+                          style: Theme.of(context).textTheme.bodyText2?.copyWith(fontSize: 18))),
                 ],
               ),
             ),
@@ -601,7 +601,7 @@ class ItemCard {
                   SizedBox(width: 16),
                   Expanded(
                       child: Text(ropeArrowDescription,
-                          style: Theme.of(context).textTheme.bodyText2)),
+                          style: Theme.of(context).textTheme.bodyText2?.copyWith(fontSize: 18))),
                 ],
               ),
             ),
@@ -649,7 +649,7 @@ class ItemCard {
                   SizedBox(width: 16),
                   Expanded(
                       child: Text(swordDescription,
-                          style: Theme.of(context).textTheme.bodyText2)),
+                          style: Theme.of(context).textTheme.bodyText2?.copyWith(fontSize: 18))),
                 ],
               ),
             ),
@@ -697,7 +697,7 @@ class ItemCard {
                   SizedBox(width: 16),
                   Expanded(
                       child: Text(blackjackDescription,
-                          style: Theme.of(context).textTheme.bodyText2)),
+                          style: Theme.of(context).textTheme.bodyText2?.copyWith(fontSize: 18))),
                   SizedBox(width: 16),
                 ],
               ),

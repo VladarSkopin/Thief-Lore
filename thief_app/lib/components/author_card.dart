@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:url_launcher/url_launcher.dart';
 import 'circle_image.dart';
 
 class AuthorCard extends StatefulWidget {
   final String authorName;
   final String title;
   final String authorDescription;
+  final String authorUrlPath;
   final ImageProvider? imageProvider;
 
   const AuthorCard(
@@ -12,6 +14,7 @@ class AuthorCard extends StatefulWidget {
       required this.authorName,
       required this.title,
       required this.authorDescription,
+        required this.authorUrlPath,
       required this.imageProvider,
       })
       : super(key: key);
@@ -108,6 +111,17 @@ class _AuthorCardState extends State<AuthorCard> {
                 color: Colors.amber
               )),
           const SizedBox(height: 14),
+          GestureDetector(
+            onTap: _launchUrl,
+            child: Text(
+              widget.authorUrlPath, style: const TextStyle(
+              fontFamily: 'Papyrus',
+              fontSize: 24.0,
+              color: Colors.blueAccent
+            ),
+            )
+          ),
+          const SizedBox(height: 20),
           IconButton(
             color: Colors.red,
             onPressed: () {
@@ -159,5 +173,13 @@ class _AuthorCardState extends State<AuthorCard> {
         ],
       ),
     );
+  }
+
+  Future<void> _launchUrl() async {
+    if (await canLaunchUrl(Uri.parse(widget.authorUrlPath))) {
+      await launchUrl(Uri.parse(widget.authorUrlPath));
+    } else {
+      throw 'Could not launch ${widget.authorUrlPath}';
+    }
   }
 }
