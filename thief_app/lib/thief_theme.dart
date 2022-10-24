@@ -12,7 +12,8 @@ class ThiefTheme {
       fontFamily: 'Carleton',
       fontSize: 24.0,
       color: Colors.amber,
-      fontWeight: FontWeight.w800
+      fontWeight: FontWeight.w800,
+      height: 1.5
     ),
       headline1: TextStyle(
         fontFamily: 'Charlesworth',
