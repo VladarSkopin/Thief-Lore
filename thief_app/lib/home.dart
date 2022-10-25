@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'components/components.dart';
+import 'screens/components.dart';
 
 class Home extends StatefulWidget {
   const Home({Key? key, required this.title}) : super(key: key);
@@ -65,7 +65,7 @@ class _HomeState extends State<Home> {
             ),
             BottomNavigationBarItem(
                 icon: Icon(Icons.title),
-                label: 'Tests',
+                label: 'Quiz',
                 backgroundColor: Colors.amber[200]
             ),
             BottomNavigationBarItem(

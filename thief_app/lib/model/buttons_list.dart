@@ -1,5 +1,4 @@
 
-import 'package:flutter/material.dart';
 import 'character.dart';
 
 class Buttons {
@@ -27,7 +26,7 @@ class Buttons {
         'Locations'
     ),
     Buttons(
-        'Tests'
+        'Quiz'
     ),
     Buttons(
       'About'

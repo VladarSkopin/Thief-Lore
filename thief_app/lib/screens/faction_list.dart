@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'faction.dart';
+import '../model/faction.dart';
 import 'faction_card.dart';
 import 'package:page_transition/page_transition.dart';
 

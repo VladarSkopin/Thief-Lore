@@ -14,7 +14,7 @@ class _PageThirdState extends State<PageThird> {
       return SafeArea(
         child: Scaffold(
             backgroundColor: Colors.blueGrey.shade800,
-          appBar: (ModalRoute.of(context)?.settings.name != '/') ? AppBar(title: Text('Tests',
+          appBar: (ModalRoute.of(context)?.settings.name != '/') ? AppBar(title: Text('Quiz',
           style: Theme.of(context).textTheme.headline4)) : null,
             body: Center(
               child: Column(
@@ -29,7 +29,7 @@ class _PageThirdState extends State<PageThird> {
                       shape: BoxShape.rectangle,
                       child: ElevatedButton(
                           onPressed: () {},
-                          child: const Text('Choose Test',
+                          child: const Text('Start Quiz',
                               style: TextStyle(
                                 fontFamily: 'JD',
                                 fontSize: 24.0,
@@ -47,7 +47,7 @@ class _PageThirdState extends State<PageThird> {
                       shape: BoxShape.rectangle,
                       child: ElevatedButton(
                           onPressed: () {},
-                          child: const Text('Random Test',
+                          child: const Text('Random Quiz',
                               style: TextStyle(
                                 fontFamily: 'JD',
                                 fontSize: 24.0,

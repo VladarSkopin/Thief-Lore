@@ -1,6 +1,6 @@
 import 'package:animated_splash_screen/animated_splash_screen.dart';
 import 'package:flutter/material.dart';
-import 'package:thief_app/components/components.dart';
+import 'package:thief_app/screens/components.dart';
 import 'package:thief_app/home.dart';
 import 'package:thief_app/splash.dart';
 import 'thief_theme.dart';

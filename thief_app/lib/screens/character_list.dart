@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'character.dart';
+import '../model/character.dart';
 import 'character_card.dart';
 import 'package:page_transition/page_transition.dart';
 
