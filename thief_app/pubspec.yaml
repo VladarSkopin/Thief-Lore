@@ -130,3 +130,7 @@ flutter:
     - assets/location_pics/thief_map_2.png
     - assets/logos/thief_logo.png
     - assets/logos/thief_logo_2.png
+    - assets/quiz_pics/characters.png
+    - assets/quiz_pics/factions.png
+    - assets/quiz_pics/items.png
+    - assets/quiz_pics/locations.png

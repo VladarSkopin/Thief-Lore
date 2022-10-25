@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'soundtracks.dart';
+import '../model/soundtracks.dart';
 import 'package:just_audio/just_audio.dart';
 
 class SoundtrackList extends StatefulWidget {
