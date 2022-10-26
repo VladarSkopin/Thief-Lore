@@ -1,7 +1,7 @@
 export '../model/buttons_list.dart';
-export 'character_list.dart';
+export 'characters_page.dart';
 export 'faction_list.dart';
-export 'item_list.dart';
+export 'items_page.dart';
 export 'soundtracks_list.dart';
 export 'page_first.dart';
 export 'page_second.dart';

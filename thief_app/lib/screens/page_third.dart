@@ -22,38 +22,40 @@ class _PageThirdState extends State<PageThird> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   SizedBox(
-                    width: 220,
-                    height: 50,
+                    width: 190,
+                    height: 80,
                     child: AvatarGlow(
-                      endRadius: 220,
+                      endRadius: 190,
                       shape: BoxShape.rectangle,
-                      child: ElevatedButton(
-                          onPressed: () {},
-                          child: const Text('Start Quiz',
-                              style: TextStyle(
-                                fontFamily: 'JD',
-                                fontSize: 24.0,
-                                color: Colors.amber,
-                                fontWeight: FontWeight.bold,
-                              ))),
+                      child: MaterialButton(
+                          onPressed: () {
+                            Navigator.pushNamed(context, '/tests/quiz');
+                          },
+                          color: Colors.deepPurple,
+                          elevation: 6.0,
+                          padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+                          child: Text('Start Quiz',
+                            style: Theme.of(context).textTheme.bodyText2?.copyWith(color: Colors.grey[300]))),
                     ),
                   ),
                   const SizedBox(height: 70),
                   SizedBox(
-                    width: 220,
-                    height: 50,
+                    width: 190,
+                    height: 80,
                     child: AvatarGlow(
-                      endRadius: 220,
+                      endRadius: 190,
                       shape: BoxShape.rectangle,
-                      child: ElevatedButton(
-                          onPressed: () {},
-                          child: const Text('Random Quiz',
-                              style: TextStyle(
-                                fontFamily: 'JD',
-                                fontSize: 24.0,
-                                color: Colors.amber,
-                                fontWeight: FontWeight.bold,
-                              ))),
+                      child: MaterialButton(
+                          onPressed: () {
+                            Navigator.pushNamed(context, '/tests/scores');
+                          },
+                          color: Colors.deepPurple,
+                          elevation: 6.0,
+                          padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+                          child: Text(
+                              'My Scores', style: Theme.of(context).textTheme.bodyText2?.copyWith(color: Colors.grey[300]),
+                          )
+                      ),
                     ),
                   )
                 ],

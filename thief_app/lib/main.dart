@@ -1,7 +1,9 @@
 import 'package:animated_splash_screen/animated_splash_screen.dart';
 import 'package:flutter/material.dart';
-import 'package:thief_app/screens/components.dart';
+import 'package:thief_app/screens/components_export.dart';
 import 'package:thief_app/home.dart';
+import 'package:thief_app/screens/quiz_page.dart';
+import 'package:thief_app/screens/scores_page.dart';
 import 'package:thief_app/splash.dart';
 import 'thief_theme.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
@@ -35,6 +37,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Thief World',
       theme: theme,
+      darkTheme: theme,
       initialRoute: '/',
       routes: {
         // '/': (context) => AnimatedSplashScreen(
@@ -56,7 +59,9 @@ class MyApp extends StatelessWidget {
         '/' : (context) => const Home(title: 'Thief Lore'),
         '/locations' : (context) => PageSecond(),
         '/tests' : (context) => PageThird(),
-        '/about' : (context) => PageFourth()
+        '/about' : (context) => PageFourth(),
+        '/tests/quiz': (context) => QuizPage(),
+        '/tests/scores' : (context) => ScoresPage()
       },
       //home: const Home(title: 'Thief Lore'),
       // home: MultiProvider(

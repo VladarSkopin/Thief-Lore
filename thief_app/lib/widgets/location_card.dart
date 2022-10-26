@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:page_transition/page_transition.dart';
 import 'location_icon_circle_image.dart';
-import 'location_pages.dart';
+import '../screens/location_pages.dart';
 
 class LocationCard {
   static Widget buildLocationCardCityMap(BuildContext context) {

@@ -5,8 +5,9 @@ class Question {
   final String text;
   final List<Option> options;
   bool isLocked;
+  Option? selectedOption;
 
-  Question({required this.text, required this.options, this.isLocked = false});
+  Question({required this.text, required this.options, this.isLocked = false, this.selectedOption});
 
   static final questionsCharacters = [
     Question(
@@ -19,7 +20,7 @@ class Question {
         ]
     ),
     Question(
-        text: 'Orland is the head of...',
+        text: 'Orland is the head of:',
         options: [
           Option(code: 'A', text: 'The Keepers', isCorrect: true),
           Option(code: 'B', text: 'The Hand Brotherhood', isCorrect: false),
@@ -37,7 +38,7 @@ class Question {
         ]
     ),
     Question(
-        text: 'In Thief the Dark Project, Garrett helped his friend to escape prison. What was friend\'s name?',
+        text: 'In Thief the Dark Project, Garrett helped his friend to escape prison:',
         options: [
           Option(code: 'A', text: 'Artemus', isCorrect: false),
           Option(code: 'B', text: 'Basso', isCorrect: true),
@@ -46,7 +47,7 @@ class Question {
         ]
     ),
     Question(
-        text: 'Garrett received a new mechanical eye from...',
+        text: 'Garrett received a new mechanical eye from:',
         options: [
           Option(code: 'A', text: 'An unknown fence', isCorrect: false),
           Option(code: 'B', text: 'Basso', isCorrect: false),
@@ -77,7 +78,7 @@ class Question {
         ]
     ),
     Question(
-        text: 'The power of the Glyphs is wielded by...',
+        text: 'The power of the Glyphs is wielded by:',
         options: [
           Option(code: 'A', text: 'The Keepers', isCorrect: true),
           Option(code: 'B', text: 'The Pagans', isCorrect: false),
@@ -86,7 +87,7 @@ class Question {
         ]
     ),
     Question(
-        text: 'In Thief Gold, the Talisman of Earth was stolen from...',
+        text: 'In Thief Gold, the Talisman of Earth was stolen from:',
         options: [
           Option(code: 'A', text: 'The Keepers', isCorrect: false),
           Option(code: 'B', text: 'The Pagans', isCorrect: false),
@@ -95,7 +96,7 @@ class Question {
         ]
     ),
     Question(
-        text: 'In Thief the Dark Project, Garrett was invited to an organization, but he rejected it. Choose which organization that was:',
+        text: 'In Thief the Dark Project, Garrett was invited to an organization, but he rejected it:',
         options: [
           Option(code: 'A', text: 'First City Bank and Trust', isCorrect: false),
           Option(code: 'B', text: 'The Mechanist Order', isCorrect: false),
@@ -117,7 +118,7 @@ class Question {
         ]
     ),
     Question(
-        text: 'In Thief 1 and Thief 2, when you want to knock someone down instantly, you use...',
+        text: 'In Thief 1 and Thief 2, when you want to knock someone down instantly, you use:',
         options: [
           Option(code: 'A', text: 'Sword', isCorrect: false),
           Option(code: 'B', text: 'Flash bomb', isCorrect: true),
@@ -126,7 +127,7 @@ class Question {
         ]
     ),
     Question(
-        text: 'If you have no other choice but to kill, the least noisy option would be to use...',
+        text: 'If you have no other choice but to kill, the least noisy option would be to use:',
         options: [
           Option(code: 'A', text: 'Fire arrow', isCorrect: false),
           Option(code: 'B', text: 'Broadhead arrow', isCorrect: true),
@@ -166,7 +167,7 @@ class Question {
         ]
     ),
     Question(
-        text: 'Angelwatch is located in...',
+        text: 'Angelwatch is located in:',
         options: [
           Option(code: 'A', text: 'Auldale', isCorrect: false),
           Option(code: 'B', text: 'Shalebridge', isCorrect: false),
@@ -193,7 +194,7 @@ class Question {
         ]
     ),
     Question(
-        text: 'In order to get into the Hammerite Cathedral, Garrett had to steal 4 Talismans. The Talisman of Fire was located in...',
+        text: 'To get into the Hammerite Cathedral, Garrett had to steal the Talisman of Fire. It was located in:',
         options: [
           Option(code: 'A', text: 'The Lost City', isCorrect: true),
           Option(code: 'B', text: 'The Pagan Forest', isCorrect: false),

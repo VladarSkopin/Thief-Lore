@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:thief_app/screens/author_card.dart';
+import 'package:thief_app/widgets/author_card.dart';
 
 class PageFourth extends StatefulWidget {
   @override

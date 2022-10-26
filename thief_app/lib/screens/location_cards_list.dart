@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'location_card.dart';
+import '../widgets/location_card.dart';
 
 class LocationCardsList {
   static Widget buildLocationCardList(BuildContext context) {
