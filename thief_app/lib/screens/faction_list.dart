@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import '../model/faction.dart';
-import 'faction_card.dart';
+import '../widgets/faction_card.dart';
 import 'package:page_transition/page_transition.dart';
 
 

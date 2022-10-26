@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:thief_app/home.dart';
-import 'components.dart';
+import 'components_export.dart';
 import 'package:page_transition/page_transition.dart';
 
 class PageFirst extends StatefulWidget {

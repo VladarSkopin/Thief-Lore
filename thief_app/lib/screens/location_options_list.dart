@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:page_transition/page_transition.dart';
-import 'location_icon_circle_image.dart';
+import '../widgets/location_icon_circle_image.dart';
 import 'location_pages.dart';
 
 class LocationOptionsList {

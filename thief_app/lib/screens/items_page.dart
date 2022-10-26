@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import '../model/items.dart';
-import 'item_card.dart';
+import '../widgets/item_card.dart';
 import 'package:just_audio/just_audio.dart';
 
 class ItemList extends StatefulWidget {
