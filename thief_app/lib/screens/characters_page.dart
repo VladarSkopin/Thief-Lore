@@ -74,7 +74,6 @@ class _CharacterListState extends State<CharacterList> {
                               context,
                               PageTransition(
                                   type: PageTransitionType.rightToLeft,
-                                  //alignment: Alignment.center,
                                   duration: Duration(milliseconds: 600),
                                   child:
                                   (index == 0) ?
@@ -165,7 +164,7 @@ class _CharacterListState extends State<CharacterList> {
         ),
         floatingActionButton: AnimatedOpacity(
           duration: Duration(milliseconds: 400),
-          opacity: _showBtn ? 0.8 : 0, // set opacity to 1 on visible, or hide
+          opacity: _showBtn ? 0.8 : 0, // set opacity to 0.8 on visible, or hide
           child: Transform.scale(
             scale: 1.2,
             child: Padding(

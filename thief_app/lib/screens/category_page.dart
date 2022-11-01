@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import '../model/category.dart';
 import '../widgets/option_widget.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:just_audio/just_audio.dart';
 
 class CategoryPage extends StatefulWidget {
   final Category category;
@@ -26,6 +27,20 @@ class _CategoryPageState extends State<CategoryPage> {
   String _finishImgUrl = 'assets/quiz_pics/coin.PNG';
   int count = 0;
 
+  late AudioPlayer player;
+
+  @override
+  void initState() {
+    super.initState();
+    player = AudioPlayer();
+  }
+
+  @override
+  void dispose() {
+    player.dispose();
+    super.dispose();
+  }
+
   void _questionAnswered(bool isOptionCorrect) {
     setState(() {
       // option was selected
@@ -41,7 +56,10 @@ class _CategoryPageState extends State<CategoryPage> {
     });
   }
 
-  void _nextQuestion() {
+  void _nextQuestion() async {
+    await player.setAsset('assets/audio/snd_test_btn_next.wav');
+    player.play();
+
     setState(() {
       _questionIndex++;
       optionIsSelected = false;
@@ -55,6 +73,9 @@ class _CategoryPageState extends State<CategoryPage> {
 
     final prefs = await SharedPreferences.getInstance();
     await prefs.setInt(widget.category.categoryName, _totalScore);
+
+    await player.setAsset('assets/audio/snd_test_loot.WAV');
+    player.play();
 
     setState(() {
       switch(_totalScore) {

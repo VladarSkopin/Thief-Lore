@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:avatar_glow/avatar_glow.dart';
-
+import 'package:just_audio/just_audio.dart';
 
 class PageThird extends StatefulWidget {
   @override
@@ -8,6 +8,19 @@ class PageThird extends StatefulWidget {
 }
 
 class _PageThirdState extends State<PageThird> {
+  late AudioPlayer player;
+
+  @override
+  void initState() {
+    super.initState();
+    player = AudioPlayer();
+  }
+
+  @override
+  void dispose() {
+    player.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -28,7 +41,9 @@ class _PageThirdState extends State<PageThird> {
                       endRadius: 190,
                       shape: BoxShape.rectangle,
                       child: MaterialButton(
-                          onPressed: () {
+                          onPressed: () async {
+                            await player.setAsset('assets/audio/snd_test_btn_start.WAV');
+                            player.play();
                             Navigator.pushNamed(context, '/tests/quiz');
                           },
                           color: Colors.deepPurple,
@@ -46,7 +61,9 @@ class _PageThirdState extends State<PageThird> {
                       endRadius: 190,
                       shape: BoxShape.rectangle,
                       child: MaterialButton(
-                          onPressed: () {
+                          onPressed: () async {
+                            await player.setAsset('assets/audio/snd_test_btn_start.WAV');
+                            player.play();
                             Navigator.pushNamed(context, '/tests/scores');
                           },
                           color: Colors.deepPurple,
