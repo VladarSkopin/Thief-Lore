@@ -4,7 +4,7 @@ import 'package:thief_app/model/question.dart';
 class Category {
   final String categoryName;
   final String imgUrl;
-  final List<Question> questions;
+  final List<Map<String, Object>> questions;
 
   Category({
     required this.categoryName, required this.imgUrl, required this.questions

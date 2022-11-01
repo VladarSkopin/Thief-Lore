@@ -104,7 +104,7 @@ class _ScoresPageState extends State<ScoresPage> {
                                        builder: (BuildContext context) => AlertDialog(
                                          backgroundColor: Color(0xFF7C5595),
                                          title: const Text(
-                                             'All scores are reseted',
+                                             'All scores are reset',
                                              style: TextStyle(
                                                  color: Colors.white, fontSize: 20),
                                              textAlign: TextAlign.center),
@@ -114,9 +114,9 @@ class _ScoresPageState extends State<ScoresPage> {
                                          actions: [
                                            TextButton(
                                              onPressed: () => Navigator.pop(context),
-                                             child: const Text('Ок',
+                                             child: const Text('ОK',
                                                  style: TextStyle(
-                                                     color: Colors.white, fontSize: 28)),
+                                                     color: Colors.white, fontSize: 20)),
                                            ),
                                          ],
                                        ));
@@ -143,7 +143,7 @@ class _ScoresPageState extends State<ScoresPage> {
                      shape: RoundedRectangleBorder(
                        borderRadius: BorderRadius.circular(10)
                      ),
-                 child: Text('RESET ALL SCORES', style: Theme.of(context).textTheme.headline3?.copyWith(color: Colors.white, fontSize: 20),)),
+                 child: Text('RESET ALL SCORES', style: Theme.of(context).textTheme.headline3?.copyWith(color: Colors.white, fontSize: 20))),
                ),
                SizedBox(height: 80),
              ],
