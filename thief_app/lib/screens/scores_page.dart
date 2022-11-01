@@ -1,5 +1,6 @@
  import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+ import 'package:just_audio/just_audio.dart';
 
 class ScoresPage extends StatefulWidget {
    const ScoresPage({Key? key}) : super(key: key);
@@ -10,6 +11,8 @@ class ScoresPage extends StatefulWidget {
 
 class _ScoresPageState extends State<ScoresPage> {
 
+  late AudioPlayer player;
+
   int charactersQuizScore = 0;
   int factionsQuizScore = 0;
   int itemsQuizScore = 0;
@@ -19,7 +22,15 @@ class _ScoresPageState extends State<ScoresPage> {
   void initState() {
     super.initState();
     loadScores();
+    player = AudioPlayer();
   }
+
+  @override
+  void dispose() {
+    player.dispose();
+    super.dispose();
+  }
+
 
   Future<void> loadScores() async {
     final prefs = await SharedPreferences.getInstance();
@@ -39,11 +50,11 @@ class _ScoresPageState extends State<ScoresPage> {
       locationsQuizScore = locQuiz;
     });
 
-    print('CHARACTERS SCORE: $charactersQuizScore');
-    print('FACTIONS SCORE: $factionsQuizScore');
-    print('ITEMS SCORE: $itemsQuizScore');
-    print('LOCATIONS SCORE: $locationsQuizScore');
-    print('---------------');
+    //print('CHARACTERS SCORE: $charactersQuizScore');
+    //print('FACTIONS SCORE: $factionsQuizScore');
+    //print('ITEMS SCORE: $itemsQuizScore');
+    //print('LOCATIONS SCORE: $locationsQuizScore');
+    //print('---------------');
   }
 
    @override
@@ -187,6 +198,9 @@ class _ScoresPageState extends State<ScoresPage> {
                                      itemsQuizScore = 0;
                                      locationsQuizScore = 0;
                                    });
+
+                                   await player.setAsset('assets/audio/snd_test_btn_finish.wav');
+                                   player.play();
 
                                    showDialog(
                                        context: context,

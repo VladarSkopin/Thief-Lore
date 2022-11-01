@@ -2,7 +2,7 @@ export '../model/buttons_list.dart';
 export 'characters_page.dart';
 export 'faction_list.dart';
 export 'items_page.dart';
-export 'soundtracks_list.dart';
+export 'soundtracks_page.dart';
 export 'page_first.dart';
 export 'page_second.dart';
 export 'page_third.dart';
