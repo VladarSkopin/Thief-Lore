@@ -20,6 +20,7 @@ dependencies:
   avatar_glow: ^1.1.0
   #vector_math: any
   url_launcher: ^6.1.6
+  shared_preferences: ^2.0.15
 
 
 dev_dependencies:
