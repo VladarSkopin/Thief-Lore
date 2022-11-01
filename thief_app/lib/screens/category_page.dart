@@ -1,7 +1,9 @@
 
+import 'dart:ui';
 import 'package:flutter/material.dart';
 import '../model/category.dart';
 import '../widgets/option_widget.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class CategoryPage extends StatefulWidget {
   final Category category;
@@ -22,6 +24,7 @@ class _CategoryPageState extends State<CategoryPage> {
   bool endOfQuiz = false;
   String _finishContent = 'You\'ve obtained a stack of coins';
   String _finishImgUrl = 'assets/quiz_pics/coin.PNG';
+  int count = 0;
 
   void _questionAnswered(bool isOptionCorrect) {
     setState(() {
@@ -49,7 +52,9 @@ class _CategoryPageState extends State<CategoryPage> {
   }
 
   void _finishQuiz() async {
-    //await UsersDatabase.instance.deleteAllUsers();
+
+    final prefs = await SharedPreferences.getInstance();
+    await prefs.setInt(widget.category.categoryName, _totalScore);
 
     setState(() {
       switch(_totalScore) {
@@ -82,33 +87,38 @@ class _CategoryPageState extends State<CategoryPage> {
 
     showDialog(
         context: context,
-        builder: (BuildContext context) => AlertDialog(
-          backgroundColor: Colors.black,
-          content: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: [
-              Text('You got $_totalScore out of ${widget.category.questions.length} correct',
-                  style: TextStyle(
-                      color: Colors.white, fontSize: 22), textAlign: TextAlign.center),
-              SizedBox(height: 20),
-              Image.asset(_finishImgUrl, scale: 3),
-              Text('\n$_finishContent',
-                  style: TextStyle(
-                      color: Colors.white, fontSize: 22), textAlign: TextAlign.center)
+        builder: (BuildContext context) => BackdropFilter(
+          filter: ImageFilter.blur(sigmaX: 8, sigmaY: 8),
+          child: AlertDialog(
+            backgroundColor: Colors.black,
+            content: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                Text('You got $_totalScore out of ${widget.category.questions.length} correct',
+                    style: TextStyle(
+                        color: Colors.white, fontSize: 22), textAlign: TextAlign.center),
+                SizedBox(height: 20),
+                Image.asset(_finishImgUrl, scale: 3),
+                Text('\n$_finishContent',
+                    style: TextStyle(
+                        color: Colors.white, fontSize: 22), textAlign: TextAlign.center)
+              ],
+            ),
+            shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(50)),
+            actionsAlignment: MainAxisAlignment.center,
+            actions: [
+              TextButton(
+                //onPressed: () => Navigator.pop(context),
+                onPressed: () => Navigator.popUntil(context, (route) => count++ == 3),
+                child: const Text('OK',
+                    style: TextStyle(
+                        color: Colors.white, fontSize: 24)),
+              ),
             ],
           ),
-          shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(50)),
-          actionsAlignment: MainAxisAlignment.center,
-          actions: [
-            TextButton(
-              onPressed: () => Navigator.pop(context),
-              child: const Text('OK',
-                  style: TextStyle(
-                      color: Colors.white, fontSize: 24)),
-            ),
-          ],
         ));
+
   }
 
 
@@ -127,17 +137,18 @@ class _CategoryPageState extends State<CategoryPage> {
               Text.rich(
                   TextSpan(
                     text: 'Your score: ${_totalScore} ',
-                    style: Theme.of(context).textTheme.bodyText1?.copyWith(fontSize: 22),
+                    style: Theme.of(context).textTheme.bodyText1?.copyWith(fontSize: 24, color: Colors.grey[300], fontWeight: FontWeight.w500),
                     children: [
                       TextSpan(
                           text: '/ ${widget.category.questions.length}',
-                        style: Theme.of(context).textTheme.bodyText1?.copyWith(fontSize: 18),
+                        style: Theme.of(context).textTheme.bodyText1?.copyWith(fontSize: 18, color: Colors.grey[300]),
                       )
                     ]
                   ),
               ),
+              Divider(thickness: 2),
               Padding(
-                padding: EdgeInsets.symmetric(vertical: 16, horizontal: 20),
+                padding: EdgeInsets.symmetric(vertical: 12, horizontal: 20),
                 child: Text(
                     widget.category.questions[_questionIndex]['question'].toString(),
                     style: Theme.of(context).textTheme.headline3?.copyWith(fontSize: 24)

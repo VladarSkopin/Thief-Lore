@@ -1,4 +1,5 @@
  import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class ScoresPage extends StatefulWidget {
    const ScoresPage({Key? key}) : super(key: key);
@@ -9,15 +10,47 @@ class ScoresPage extends StatefulWidget {
 
 class _ScoresPageState extends State<ScoresPage> {
 
-  int charactersQuizScore = 1;
-  int factionsQuizScore = 1;
-  int itemsQuizScore = 1;
-  int locationsQuizScore = 1;
+  int charactersQuizScore = 0;
+  int factionsQuizScore = 0;
+  int itemsQuizScore = 0;
+  int locationsQuizScore = 0;
+
+  @override
+  void initState() {
+    super.initState();
+    loadScores();
+  }
+
+  Future<void> loadScores() async {
+    final prefs = await SharedPreferences.getInstance();
+    int charQuiz = await prefs.getInt('Characters') ?? 0;
+    int factQuiz = await prefs.getInt('Factions') ?? 0;
+    int itemQuiz = await prefs.getInt('Items') ?? 0;
+    int locQuiz = await prefs.getInt('Locations') ?? 0;
+
+    setState(() {
+      //charactersQuizScore = await prefs.getInt('Characters') ?? 0;
+      //factionsQuizScore = await prefs.getInt('Factions') ?? 0;
+      //itemsQuizScore = await prefs.getInt('Items') ?? 0;
+      //locationsQuizScore = await prefs.getInt('Locations') ?? 0;
+      charactersQuizScore = charQuiz;
+      factionsQuizScore = factQuiz;
+      itemsQuizScore = itemQuiz;
+      locationsQuizScore = locQuiz;
+    });
+
+    print('CHARACTERS SCORE: $charactersQuizScore');
+    print('FACTIONS SCORE: $factionsQuizScore');
+    print('ITEMS SCORE: $itemsQuizScore');
+    print('LOCATIONS SCORE: $locationsQuizScore');
+    print('---------------');
+  }
 
    @override
    Widget build(BuildContext context) {
      final _width = MediaQuery.of(context).size.width * 0.45;
      return Scaffold(
+       //backgroundColor: Colors.black,
        appBar: AppBar(title: Text('Quiz Scores', style: Theme.of(context).textTheme.headline4)),
        body: Padding(
          padding: const EdgeInsets.all(20),
@@ -34,6 +67,19 @@ class _ScoresPageState extends State<ScoresPage> {
                    Text('$charactersQuizScore / 5', style: Theme.of(context).textTheme.bodyText2?.copyWith(fontSize: 20))
                  ],
                ),
+               SizedBox(height: 12),
+               ColoredBox(
+                 color: Colors.black,
+                 child: Padding(
+                   padding: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 2),
+                   child: Row(
+                     children: [
+                       Text('Loot: ', style: TextStyle(color: Colors.grey[300], fontSize: 18)),
+                       Image.asset(getImgUrlFromQuizScore(charactersQuizScore), scale: charactersQuizScore == 5 ? 5 : charactersQuizScore == 0 ? 14 : 8)
+                     ],
+                   ),
+                 ),
+               ),
                Divider(color: Colors.grey, height: 30, thickness: 1),
                SizedBox(height: 20),
                Image(image: AssetImage('assets/quiz_pics/factions.png'), width: _width, height: _width),
@@ -44,6 +90,19 @@ class _ScoresPageState extends State<ScoresPage> {
                    SizedBox(width: 20),
                    Text('$factionsQuizScore / 5', style: Theme.of(context).textTheme.bodyText2?.copyWith(fontSize: 20))
                  ],
+               ),
+               SizedBox(height: 12),
+               ColoredBox(
+                 color: Colors.black,
+                 child: Padding(
+                   padding: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 2),
+                   child: Row(
+                     children: [
+                       Text('Loot: ', style: TextStyle(color: Colors.grey[300], fontSize: 18)),
+                       Image.asset(getImgUrlFromQuizScore(factionsQuizScore), scale: factionsQuizScore == 5 ? 5 : factionsQuizScore == 0 ? 14 : 8)
+                     ],
+                   ),
+                 ),
                ),
                Divider(color: Colors.grey, height: 30, thickness: 1),
                SizedBox(height: 20),
@@ -56,6 +115,19 @@ class _ScoresPageState extends State<ScoresPage> {
                    Text('$itemsQuizScore / 5', style: Theme.of(context).textTheme.bodyText2?.copyWith(fontSize: 20))
                  ],
                ),
+               SizedBox(height: 12),
+               ColoredBox(
+                 color: Colors.black,
+                 child: Padding(
+                   padding: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 2),
+                   child: Row(
+                     children: [
+                       Text('Loot: ', style: TextStyle(color: Colors.grey[300], fontSize: 18)),
+                       Image.asset(getImgUrlFromQuizScore(itemsQuizScore), scale: itemsQuizScore == 5 ? 5 : itemsQuizScore == 0 ? 14 : 8)
+                     ],
+                   ),
+                 ),
+               ),
                Divider(color: Colors.grey, height: 30, thickness: 1),
                SizedBox(height: 20),
                Image(image: AssetImage('assets/quiz_pics/locations.png'), width: _width, height: _width),
@@ -66,6 +138,19 @@ class _ScoresPageState extends State<ScoresPage> {
                    SizedBox(width: 20),
                    Text('$locationsQuizScore / 5', style: Theme.of(context).textTheme.bodyText2?.copyWith(fontSize: 20))
                  ],
+               ),
+               SizedBox(height: 12),
+               ColoredBox(
+                 color: Colors.black,
+                 child: Padding(
+                   padding: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 2),
+                   child: Row(
+                     children: [
+                       Text('Loot: ', style: TextStyle(color: Colors.grey[300], fontSize: 18)),
+                       Image.asset(getImgUrlFromQuizScore(locationsQuizScore), scale: locationsQuizScore == 5 ? 5 : locationsQuizScore == 0 ? 14 : 8)
+                     ],
+                   ),
+                 ),
                ),
                SizedBox(height: 40),
                Align(
@@ -90,7 +175,11 @@ class _ScoresPageState extends State<ScoresPage> {
                                TextButton(
                                  onPressed: () async {
                                    Navigator.pop(context);
-                                   //await UsersDatabase.instance.deleteAllUsers();
+                                   final prefs = await SharedPreferences.getInstance();
+                                   await prefs.setInt('Characters', 0);
+                                   await prefs.setInt('Factions', 0);
+                                   await prefs.setInt('Items', 0);
+                                   await prefs.setInt('Locations', 0);
 
                                    setState(() {
                                      charactersQuizScore = 0;
@@ -151,5 +240,27 @@ class _ScoresPageState extends State<ScoresPage> {
          ),
        ),
      );
+   }
+
+   String getImgUrlFromQuizScore(int score) {
+    String imgUrl = 'assets/quiz_pics/coin.PNG';
+    switch (score) {
+      case 1:
+        imgUrl = 'assets/quiz_pics/goblet.PNG';
+        break;
+      case 2:
+        imgUrl = 'assets/quiz_pics/golden_dice.PNG';
+        break;
+      case 3:
+        imgUrl = 'assets/quiz_pics/rare_spice.PNG';
+        break;
+      case 4:
+        imgUrl = 'assets/quiz_pics/gem_ring.PNG';
+        break;
+      case 5:
+        imgUrl = 'assets/quiz_pics/precursor_mask.PNG';
+        break;
+    }
+    return imgUrl;
    }
 }
