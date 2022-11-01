@@ -54,7 +54,7 @@ class _HomeState extends State<Home> {
           onTap: onItemTapped,
           items: [
             BottomNavigationBarItem(
-                icon: Icon(Icons.assignment_rounded),
+                icon: Icon(Icons.menu),
                 label: 'Menu',
                 backgroundColor: Colors.white
             ),
@@ -64,7 +64,7 @@ class _HomeState extends State<Home> {
                 backgroundColor: Colors.teal[100]
             ),
             BottomNavigationBarItem(
-                icon: Icon(Icons.title),
+                icon: Icon(Icons.quiz),
                 label: 'Quiz',
                 backgroundColor: Colors.amber[200]
             ),
