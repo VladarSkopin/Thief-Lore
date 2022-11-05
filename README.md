@@ -39,11 +39,4 @@ SPECIAL THANKS
 To all the LGS team members for creating such an incredible game. 
 We will never forget your investment in modern game industry.
 Amen.
-_____
-
-LICENSE
-
-Since it's just a college project, there is no need for any license.
-Anyone is welcome to use this app and its source code as they want to.
-
 
