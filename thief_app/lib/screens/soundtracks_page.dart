@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:page_transition/page_transition.dart';
+import 'package:thief_app/screens/soundtrack_screen.dart';
 import '../model/soundtracks.dart';
-import 'package:just_audio/just_audio.dart';
 
 class SoundtrackList extends StatefulWidget {
   @override
@@ -12,15 +13,10 @@ class _SoundtrackListState extends State<SoundtrackList> {
   late ScrollController _scrollController;
   bool _showBtn = false;
 
-  /*
-  This initializes AudioPlayer when the UI loads. It will also dispose the
-  audio player and release the resources when the app closes.
-   */
-
-  late AudioPlayer player;
-
   @override
   void initState() {
+    super.initState();
+
     _scrollController = ScrollController();
     _scrollController.addListener(() {
       double _showOffset = 300.0;
@@ -35,15 +31,9 @@ class _SoundtrackListState extends State<SoundtrackList> {
         });
       }
     });
-    super.initState();
-    player = AudioPlayer();
+
   }
 
-  @override
-  void dispose() {
-    player.dispose();
-    super.dispose();
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -90,70 +80,28 @@ class _SoundtrackListState extends State<SoundtrackList> {
                           ),
                         ),
                         child: MaterialButton(
-                          elevation: 8.0,
-                          onPressed: () async {
-                            if (index == 0) {
-                              await player.setAsset('assets/audio/the_blue_heron_inn.mp3');
-                              player.play();
-                            } else if (index == 1) {
-                              await player.setAsset('assets/audio/rutherford_castle.mp3');
-                              player.play();
-                            } else if (index == 2) {
-                              await player.setAsset('assets/audio/south_quarter.mp3');
-                              player.play();
-                            } else if (index == 3) {
-                              await player.setAsset('assets/audio/stonemarket.mp3');
-                              player.play();
-                            } else if (index == 4) {
-                              await player.setAsset('assets/audio/the_keeper_library.mp3');
-                              player.play();
-                            } else if (index == 5) {
-                              await player.setAsset('assets/audio/the_docks.mp3');
-                              player.play();
-                            } else if (index == 6) {
-                              await player.setAsset('assets/audio/old_quarter.mp3');
-                              player.play();
-                            } else if (index == 7) {
-                              await player.setAsset('assets/audio/auldale.mp3');
-                              player.play();
-                            } else if (index == 8) {
-                              await player.setAsset('assets/audio/shalebridge_cradle.mp3');
-                              player.play();
-                            } else if (index == 9) {
-                              await player.setAsset('assets/audio/wieldstrom_museum.mp3');
-                              player.play();
-                            } else if (index == 10) {
-                              await player.setAsset('assets/audio/intervention.mp3');
-                              player.play();
-                            } else if (index == 11) {
-                              await player.setAsset('assets/audio/shipping_and_receiving.mp3');
-                              player.play();
-                            } else if (index == 12) {
-                              await player.setAsset('assets/audio/framed.mp3');
-                              player.play();
-                            } else if (index == 13) {
-                              await player.setAsset('assets/audio/the_pagans.mp3');
-                              player.play();
-                            } else if (index == 14) {
-                              await player.setAsset('assets/audio/trail_of_blood.mp3');
-                              player.play();
-                            } else if (index == 15) {
-                              await player.setAsset('assets/audio/sabotage_at_soulforge.mp3');
-                              player.play();
-                            } else if (index == 16) {
-                              await player.setAsset('assets/audio/i_just_saved_the_world.mp3');
-                              player.play();
-                            } else {
-                              // await player.setAsset('assets/audio/credits.mp3');
-                              // player.play();
-                            }
+                          onPressed: () {
+                            Navigator.push(
+                                context, PageTransition(
+                                type: PageTransitionType.fade,
+                                duration: Duration(milliseconds: 600),
+                                child: SoundtrackScreen(
+                                  soundtrackName: soundtracks[index].title,
+                                  soundtrackPath: soundtracks[index].path,
+                                  imagePath: soundtracks[index].imagePath,
+                                )
+                            ));
                           },
-                          child:
-                          ListTile(
-                            leading: Icon(Icons.album, size: 30, color: Colors.grey[400]),
-                            title: Text(soundtracks[index].title,
-                                style: Theme.of(context).textTheme.headline6),
-                          )
+                          elevation: 8.0,
+                          child: Column(
+                            children: [
+                            ListTile(
+                              leading: Icon(Icons.album, size: 30, color: Colors.grey[400]),
+                              title: Text(soundtracks[index].title,
+                                  style: Theme.of(context).textTheme.headline6),
+                            ),
+                            ],
+                          ),
                         ),
                       ),
                   (index == soundtracks.length - 1) ? const SizedBox(
@@ -189,4 +137,6 @@ class _SoundtrackListState extends State<SoundtrackList> {
       ),
     );
   }
+
+
 }
